@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProyectoPaises.BusquedasTabPage"
+             x:Name="Root">
+  <!--Pages can be added as references or inline-->
+    <ContentPage Title="Nombre" >
+        <StackLayout>
+    
+            <Entry x:Name="TxtNombre" Placeholder="Buscar por nombre..."  />
+            <Button x:Name="bntBuscarNombre" Text="Buscar" Command="{Binding BntBuscarNombreCommando}" 
+                     BindingContext="{Binding Source={x:Reference Root} }"/>
+
+            <ScrollView  VerticalOptions="FillAndExpand">
+                <ListView BindingContext="{Binding Source={x:Reference Root} }"
+                          ItemsSource="{Binding Path=ItemsNombre}"
+                          IsRefreshing="{Binding IsBusy}"
+                          SelectedItem="{Binding seleccionar}" >
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="1">
+                                        <Label Text="{Binding name}" TextColor="Black"/>
+                                        <Label Text="{Binding nativeName}"/>
+                                    </StackLayout>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </ScrollView>
+        </StackLayout>
+    </ContentPage>
+    
+    <ContentPage Title="Codigo" >
+        <StackLayout>
+
+            <Entry x:Name="TxtCodigo" Placeholder="Buscar por codigo..."  />
+            <Button x:Name="bntBuscarCodigo" Text="Buscar" Command="{Binding BntBuscarCodigoCommando}" 
+                     BindingContext="{Binding Source={x:Reference Root} }"/>
+
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <!-- *, Auto, XX -->
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Nombre:" Grid.Row="0" Grid.Column="0" />
+                <Label x:Name="lblPaisNombre" Grid.Row="0" Grid.Column="1" />
+                
+                <Label Text="Región" Grid.Row="1" Grid.Column="0" />
+                <Label x:Name="lblPaisRegion" Grid.Row="1" Grid.Column="1" />
+
+                <Label Text="Sub región" Grid.Row="2" Grid.Column="0" />
+                <Label x:Name="lblPaisSubRegion" Grid.Row="2" Grid.Column="1" />
+
+                <Label Text="Poblacion" Grid.Row="3" Grid.Column="0" />
+                <Label x:Name="lblPaisPoblacion" Grid.Row="3" Grid.Column="1" />
+
+                <Label Text="Area"  Grid.Row="4" Grid.Column="0" />
+                <Label x:Name="lblPaisArea" Grid.Row="4" Grid.Column="1" />
+
+                <Label Text="Bandera" Grid.Row="5" Grid.Column="0" />
+                <Image x:Name="imageBandera" Grid.Row="5" Grid.Column="1" />
+            </Grid>
+            
+        </StackLayout>
+    </ContentPage>
+    
+    <ContentPage Title="Moneda" >
+        <StackLayout>
+
+            <Entry x:Name="TxtMoneda" Placeholder="Buscar por moneda..."  />
+            <Button x:Name="bntBuscarMoneda" Text="Buscar" Command="{Binding BntBuscarMonedaCommando}" 
+                     BindingContext="{Binding Source={x:Reference Root} }"/>
+            
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <!-- *, Auto, XX -->
+                    <!--<RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />-->
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <Label Text="Nombre:" Grid.Row="0" Grid.Column="0" />
+                <Label x:Name="lblPaisNombreM" Grid.Row="0" Grid.Column="1" />
+
+                <Label Text="Región" Grid.Row="1" Grid.Column="0" />
+                <Label x:Name="lblPaisRegionM" Grid.Row="1" Grid.Column="1" />
+
+                <Label Text="Sub región" Grid.Row="2" Grid.Column="0" />
+                <Label x:Name="lblPaisSubRegionM" Grid.Row="2" Grid.Column="1" />
+
+                <Label Text="Poblacion" Grid.Row="3" Grid.Column="0" />
+                <Label x:Name="lblPaisPoblacionM" Grid.Row="3" Grid.Column="1" />
+
+                <Label Text="Area"  Grid.Row="4" Grid.Column="0" />
+                <Label x:Name="lblPaisAreaM" Grid.Row="4" Grid.Column="1" />
+
+                <Label Text="Moneda" Grid.Row="5" Grid.Column="0" />
+                <ScrollView>
+                    <ListView BindingContext="{Binding Source={x:Reference Root} }"
+                      ItemsSource="{Binding Path=ItemsMonedas}"
+                      IsRefreshing="{Binding IsBusy}">
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <StackLayout Grid.Column="1">
+                                            <Label Text="{Binding code}"/>
+                                            <Label Text="{Binding name}"/>
+                                        </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage>
+</TabbedPage>
